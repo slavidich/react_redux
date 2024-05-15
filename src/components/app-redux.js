@@ -16,7 +16,7 @@ class ReduxApp extends React.Component {
                     }}/>
                 <button onClick={this.additem.bind(this)}>click me </button>
                 <ul>
-                    {this.props.frameworks.map(item=>
+                    {this.props.libraries.map(item=>
                         <li key={item}>{item}</li>
                     )}
                 </ul>
@@ -34,7 +34,7 @@ export default connect(
     //mapDispatchToProps
     dispatch => ({
         addElement: (elem)=>{
-            dispatch({type:'ADD_FRAMEWORK', payload: elem})
+            dispatch({type:'ADD_LIBRARY', payload: elem})
         }
     })
     )(ReduxApp)
