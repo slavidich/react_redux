@@ -1,28 +1,28 @@
 import React from "react";
 import { connect } from "react-redux"
+import Timer from "./timer"
+import Items from "./items"
 
-class ReduxApp extends React.Component {
-    additem(){
-        console.log('action done', this.inputValue.value)
-        this.props.addElement(this.inputValue.value)
-        this.inputValue.value = ''
+function ReduxApp(props){
+    console.log(props)
+    const inputRef = React.useRef(null)
+    function additem(){
+        console.log('action done', )
+        props.addElement(inputRef.current.value)
+        inputRef.current.value=''
     }
-    render(){
-        console.log(this.props)
-        return(
-            <div>
-                <input type="text" ref={input => {
-                        this.inputValue= input
-                    }}/>
-                <button onClick={this.additem.bind(this)}>click me </button>
-                <ul>
-                    {this.props.libraries.map(item=>
-                        <li key={item}>{item}</li>
-                    )}
-                </ul>
-            </div>
-        )
-    }
+    return(
+        <>
+            <Timer></Timer>
+            <Items></Items>
+            <input type="text" ref={inputRef}/>
+            <button onClick={()=> additem()}>click me </button>
+            <ul>
+                {props.libraries.map(item=>
+                    <li key={item}>{item}</li>
+                )}
+            </ul>
+        </>)
 }
 
 export default connect(
