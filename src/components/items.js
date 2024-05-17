@@ -1,5 +1,6 @@
 import React from "react"
 import axios from "axios"
+import {Routes, Route, Link} from "react-router-dom"
 
 function items(props){
     let [isLoaded, setisLoaded] = React.useState(false)
@@ -27,7 +28,7 @@ function items(props){
         return(
             <div className="items">
                 {items.map(item=>{
-                    return <p key={item.id}>{item.id} {item.title} {item.author}</p>
+                    return <p key={item.id}><Link to={"/items/"+item.id}>{item.id}</Link> {item.title} {item.author}</p>
                 })}
             </div>
         )
